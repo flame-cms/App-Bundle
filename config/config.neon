@@ -32,9 +32,6 @@ php:
   date.timezone: Europe/Prague
   zlib.output_compression: yes
 
-modules:
-  linkBudle: [%bundlesDir%/link-bundle/config/config.neon]
-
 doctrine:
   proxyDirs: [%appDir%/Models]
   connection: %database%
