@@ -1,0 +1,22 @@
+{
+	"name": "flame/app-bundle",
+	"type": "nette-bundle",
+	"description": "App bundle",
+	"keywords": ["app bundle", "nette"],
+	"homepage": "https://github.com/flame-cms/App-Bundle",
+	"license": "BSD-3",
+	"authors": [
+		{
+			"name": "Jiří Šifalda",
+			"homepage": "http://jsifalda.name/"
+		}
+	],
+	"autoload": {
+		"classmap": [ "" ]
+	},
+	"require": {
+		"nette/nette": "@dev",
+		"flame/budle-installer": "@dev",
+		"flame/framework": ">=3.0.1"
+	}
+}
