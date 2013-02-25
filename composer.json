@@ -1,5 +1,5 @@
 {
-	"name": "flame/app-bundle",
+	"name": "flame-cms/app-bundle",
 	"type": "nette-bundle",
 	"description": "App bundle",
 	"keywords": ["app bundle", "nette"],
