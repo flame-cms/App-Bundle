@@ -50,6 +50,11 @@ services:
 
 	ThumbnailsCreator: \Flame\Templating\Helpers\ThumbnailsCreator(%wwwDir%, %imageStorage.thumbDir%)
 
+	presneterLoader:
+		class: \Flame\Loaders\PresenterLoader
+		setup:
+			- setAppDir(%appDir%)
+
 
 
 
