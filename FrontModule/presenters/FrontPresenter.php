@@ -31,7 +31,7 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	
 	/**
 	 * @autowire
-	 * @var \Flame\CMS\Components\Tags\TagControlFactory
+	 * @var \Flame\CMS\TagBundle\Components\TagControlFactory
 	 */
 	protected $tagControlFactory;
 	
@@ -105,7 +105,7 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	}
 
 	/**
-	 * @return \Flame\CMS\Components\Tags\TagControl
+	 * @return \Flame\CMS\TagBundle\Components\TagControl
 	 */
 	protected function createComponentTagsControl()
 	{
