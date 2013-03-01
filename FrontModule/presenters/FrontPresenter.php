@@ -19,7 +19,7 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	
 	/**
 	 * @autowire
-	 * @var \Flame\CMS\SettingBundle\Entity\Settings\SettingFacade
+	 * @var \Flame\CMS\SettingBundle\Model\SettingFacade
 	 */
 	protected $settingFacade;
 	
