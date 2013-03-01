@@ -1,23 +1,28 @@
 factories:
-	categoryForm:
-		create: \Flame\CMS\AdminModule\Forms\Categories\CategoryForm(%categories%, %defaults%)
-		implement: \Flame\CMS\AdminModule\Forms\Categories\ICategoryFormFactory
-		parameters: [array categories, array defaults = []]
+  flashMessageControl:
+    create: \Flame\Addons\FlashMessages\FlashMessageControl(%templateFile%)
+    implement: \Flame\Addons\FlashMessages\IFlashMessageControlFactory
+    parameters: [templateFile = null]
 
-	lightGalleryControl:
-		create: \Flame\Components\LightGallery\LightGalleryControl(%images%)
-		implement: \Flame\Components\LightGallery\ILightGalleryControlFactory
-		parameters: [images]
+  categoryForm:
+    create: \Flame\CMS\AdminModule\Forms\Categories\CategoryForm(%categories%, %defaults%)
+    implement: \Flame\CMS\AdminModule\Forms\Categories\ICategoryFormFactory
+    parameters: [array categories, array defaults = []]
 
-	imageForm:
-		create: \Flame\CMS\AdminModule\Forms\Images\ImageForm(%categories%, %defaults%)
-		implement: \Flame\CMS\AdminModule\Forms\Images\IImageFormFactory
-		parameters: [array categories, array defaults = []]
+  lightGalleryControl:
+    create: \Flame\Components\LightGallery\LightGalleryControl(%images%)
+    implement: \Flame\Components\LightGallery\ILightGalleryControlFactory
+    parameters: [images]
 
-	postControl:
-		create: \Flame\CMS\Components\Posts\PostControl(%posts%)
-		implement: \Flame\CMS\Components\Posts\IPostControlFactory
-		parameters: [array posts]
+  imageForm:
+    create: \Flame\CMS\AdminModule\Forms\Images\ImageForm(%categories%, %defaults%)
+    implement: \Flame\CMS\AdminModule\Forms\Images\IImageFormFactory
+    parameters: [array categories, array defaults = []]
 
-	navbarBuilderControl:
-		implement: \Flame\Components\NavbarBuilder\INavbarBuilderControlFactory
+  postControl:
+    create: \Flame\CMS\Components\Posts\PostControl(%posts%)
+    implement: \Flame\CMS\Components\Posts\IPostControlFactory
+    parameters: [array posts]
+
+  navbarBuilderControl:
+    implement: \Flame\Components\NavbarBuilder\INavbarBuilderControlFactory

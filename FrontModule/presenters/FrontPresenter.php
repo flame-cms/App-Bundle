@@ -53,6 +53,12 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	 */
 	protected $themeManager;
 
+	/**
+	 * @autowire
+	 * @var \Flame\Addons\FlashMessages\IFlashMessageControlFactory
+	 */
+	protected $flashMessagesControlFactory;
+
 	public function startup()
 	{
 		parent::startup();
@@ -122,6 +128,14 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 		}
 
 		return $control;
+	}
+
+	/**
+	 * @return \Flame\Addons\FlashMessages\FlashMessageControl
+	 */
+	protected function createComponentFlasheMessages()
+	{
+		return $this->flashMessagesControlFactory->create();
 	}
 
 

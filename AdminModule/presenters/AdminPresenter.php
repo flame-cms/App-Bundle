@@ -17,6 +17,12 @@ abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
 	 */
 	protected $presenterLoader;
 
+	/**
+	 * @autowire
+	 * @var \Flame\Addons\FlashMessages\IFlashMessageControlFactory
+	 */
+	protected $flashMessagesControlFactory;
+
 	public function startup()
 	{
 		parent::startup();
@@ -90,5 +96,13 @@ abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
 		}
 
 		return $presenters;
+	}
+
+	/**
+	 * @return \Flame\Addons\FlashMessages\FlashMessageControl
+	 */
+	protected function createComponentFlasheMessages()
+	{
+		return $this->flashMessagesControlFactory->create();
 	}
 }
