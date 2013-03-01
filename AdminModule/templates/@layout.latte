@@ -31,12 +31,9 @@
         </div>
         <div class="span10">
             <ul class="breadcrumb">
+
 			{foreach $breadCrumbs as $breadcrumb}
-				{if $iterator->last}
-                    <li class="active">{$breadcrumb}</li>
-					{else}
-                    <li><a>{$breadcrumb}</a> <span class="divider">/</span></li>
-				{/if}
+            	<li n:class="$iterator->last ? active"><a href="{$breadcrumb->link}">{$breadcrumb->name|firstUpper}</a> {if !$iterator->last}<span class="divider">/</span>{/if}</li>
 			{/foreach}
             </ul>
 

@@ -2,6 +2,8 @@
 
 namespace Flame\CMS\AdminModule;
 
+use Flame\Utils\Strings;
+
 abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
 {
 
@@ -45,12 +47,18 @@ abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
 	 */
 	protected function generateBreadCrumb()
 	{
-		$parts = explode(':', $this->name);
-		$parts[] = $this->view;
+		$parts = array(
+			array('link' => $this->link('Dashboard:'), 'name'  => 'Admin'),
+			array('link' => $this->link(':' . $this->name . ':'), 'name' => Strings::getLastPiece($this->name, ':')),
+			array('link' => $this->link(':' . $this->name . ':' . $this->view), 'name' => $this->view),
+		);
+
+
 		if($parameter = $this->getParameter('id')){
-			$parts[] = $parameter;
+			$parts[] = array('link' => $this->link(':' . $this->name . ':' . $this->view, array('id' => $parameter)), 'name' => $parameter);
 		}
-		return $parts;
+
+		return \Nette\ArrayHash::from($parts);
 	}
 
 	/**
