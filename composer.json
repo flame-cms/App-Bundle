@@ -13,6 +13,7 @@
 	],
 	"require": {
 		"nette/nette": "@dev",
+		"flame-cms/setting-bundle": "@dev",
 		"flame/bundle-installer": "@dev",
 		"flame/framework": ">=3.0.1"
 	}

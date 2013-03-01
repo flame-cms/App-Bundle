@@ -19,9 +19,6 @@ services:
 
 	UserInfoFacade: Flame\CMS\Models\UsersInfo\UserInfoFacade
 
-	OptionFacade: Flame\CMS\Models\Options\OptionFacade
-	OptionFormFactory: Flame\CMS\AdminModule\Forms\Options\OptionFormFactory
-
 	CommentFacade: Flame\CMS\Models\Comments\CommentFacade
 	CommentFormFactory: Flame\CMS\Components\Comments\CommentFormFactory
 	CommentControlFactory: Flame\CMS\Components\Comments\CommentControlFactory

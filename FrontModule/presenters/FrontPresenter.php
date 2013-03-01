@@ -19,9 +19,9 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	
 	/**
 	 * @autowire
-	 * @var \Flame\CMS\Models\Options\OptionFacade
+	 * @var \Flame\CMS\SettingBundle\Entity\Settings\SettingFacade
 	 */
-	protected $optionFacade;
+	protected $settingFacade;
 	
 	/**
 	 * @autowire
@@ -78,7 +78,6 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	{
 		parent::beforeRender();
 
-		$this->template->name = $this->optionFacade->getOptionValue('Name');
 		$this->template->theme = $this->themeManager->getTheme();
 	}
 
@@ -87,7 +86,7 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	 */
 	protected function createComponentNewsreelControl()
 	{
-		$this->newsreelControlFactory->setLimit($this->optionFacade->getOptionValue('Menu:NewsreelCount'));
+		$this->newsreelControlFactory->setLimit($this->settingFacade->getSettingValue('menu_newsreelCount'));
 		return $this->newsreelControlFactory->create();
 	}
 
