@@ -7,18 +7,6 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 
 	/**
 	 * @autowire
-	 * @var \Flame\CMS\Models\Menu\MenuFacade
-	 */
-	protected $menuFacade;
-	
-	/**
-	 * @autowire
-	 * @var \Flame\CMS\Models\Pages\PageFacade
-	 */
-	protected $pageFacade;
-	
-	/**
-	 * @autowire
 	 * @var \Flame\CMS\SettingBundle\Model\SettingFacade
 	 */
 	protected $settingFacade;
@@ -34,24 +22,7 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	 * @var \Flame\CMS\TagBundle\Components\TagControlFactory
 	 */
 	protected $tagControlFactory;
-	
-	/**
-	 * @autowire
-	 * @var \Flame\CMS\Components\Newsreel\NewsreelControlFactory
-	 */
-	protected $newsreelControlFactory;
-	
-	/**
-	 * @autowire
-	 * @var \Flame\CMS\Components\Categories\CategoryControlFactory
-	 */
-	protected $categoryControlFactory;
-	
-	/**
-	 * @autowire
-	 * @var \Flame\CMS\Templating\ThemeManager
-	 */
-	protected $themeManager;
+
 
 	/**
 	 * @autowire
@@ -67,41 +38,6 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 			$this->flashMessage('Access denied', 'error');
 			$this->redirect('Homepage:');
 		}
-	}
-
-	/**
-	 * @return array
-	 */
-	public function formatLayoutTemplateFiles()
-	{
-		$list = parent::formatLayoutTemplateFiles();
-		$wwwDir = $this->getContextParameter('wwwDir');
-		array_unshift($list, $wwwDir . DIRECTORY_SEPARATOR . $this->themeManager->getTheme() . "/@layout.latte");
-		return $list;
-	}
-
-	public function beforeRender()
-	{
-		parent::beforeRender();
-
-		$this->template->theme = $this->themeManager->getTheme();
-	}
-
-	/**
-	 * @return \Flame\CMS\Components\Newsreel\NewsreelControl
-	 */
-	protected function createComponentNewsreelControl()
-	{
-		$this->newsreelControlFactory->setLimit($this->settingFacade->getSettingValue('menu_newsreelCount'));
-		return $this->newsreelControlFactory->create();
-	}
-
-	/**
-	 * @return \Flame\CMS\Components\Categories\CategoryControl
-	 */
-	protected function createComponentCategoriesControl()
-	{
-		return $this->categoryControlFactory->create();
 	}
 
 	/**
@@ -121,11 +57,11 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 
 		$navbar = $control->getNavbarControl();
 
-		if(count($items = $this->menuFacade->getLastMenuLinkByPriority())){
-			foreach($items as $item){
-				$navbar->addItem($item->title, $item->url);
-			}
-		}
+//		if(count($items = $this->menuFacade->getLastMenuLinkByPriority())){
+//			foreach($items as $item){
+//				$navbar->addItem($item->title, $item->url);
+//			}
+//		}
 
 		return $control;
 	}
