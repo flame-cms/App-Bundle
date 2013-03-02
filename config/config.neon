@@ -10,7 +10,7 @@ parameters:
     charset: utf8
     port: 3306
 
-  disabledPresenters: ['Admin', 'Dashboard', 'User']
+  disabledPresenters: ['Admin', 'Dashboard']
 
   entities: []
 
