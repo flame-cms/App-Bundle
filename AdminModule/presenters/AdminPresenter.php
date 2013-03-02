@@ -4,14 +4,13 @@ namespace Flame\CMS\AdminModule;
 
 use Flame\Utils\Strings;
 
-abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
+abstract class AdminPresenter extends \Flame\CMS\AppBundle\Application\UI\BasePresenter
 {
 
 	/**
-	 * @autowire
-	 * @var \Flame\Components\NavbarBuilder\INavbarBuilderControlFactory
+	 * @var string
 	 */
-	protected $navbarBuilderControlFactory;
+	protected $loginLink = ':Front:Sign:in';
 
 	/**
 	 * @autowire
@@ -21,9 +20,9 @@ abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
 
 	/**
 	 * @autowire
-	 * @var \Flame\Addons\FlashMessages\IFlashMessageControlFactory
+	 * @var \Flame\Components\NavbarBuilder\INavbarBuilderControlFactory
 	 */
-	protected $flashMessagesControlFactory;
+	protected $navbarBuilderControlFactory;
 
 	public function startup()
 	{
@@ -33,6 +32,23 @@ abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
 			$this->flashMessage('Access denied', 'error');
 			$this->redirect('Dashboard:');
 		}
+	}
+
+	/**
+	 * @param $element
+	 */
+	public function checkRequirements($element)
+	{
+		parent::checkRequirements($element);
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect($this->loginLink, array('backlink' => $this->storeRequest()));
+		}
+	}
+
+	public function handleLogout()
+	{
+		$this->getUser()->logout(TRUE);
+		$this->redirect($this->loginLink);
 	}
 
 	public function beforeRender()
@@ -106,11 +122,4 @@ abstract class AdminPresenter extends \Flame\Application\UI\SecuredPresenter
 		return $presenters;
 	}
 
-	/**
-	 * @return \Flame\Addons\FlashMessages\FlashMessageControl
-	 */
-	protected function createComponentFlasheMessages()
-	{
-		return $this->flashMessagesControlFactory->create();
-	}
 }

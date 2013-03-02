@@ -2,7 +2,7 @@
 
 namespace Flame\CMS\FrontModule;
 
-abstract class FrontPresenter extends \Flame\Application\UI\Presenter
+abstract class FrontPresenter extends \Flame\CMS\AppBundle\Application\UI\BasePresenter
 {
 
 	/**
@@ -16,19 +16,6 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 	 * @var \Flame\Components\NavbarBuilder\INavbarBuilderControlFactory
 	 */
 	protected $navbarBuilderControlFactory;
-	
-	/**
-	 * @autowire
-	 * @var \Flame\CMS\TagBundle\Components\TagControlFactory
-	 */
-	protected $tagControlFactory;
-
-
-	/**
-	 * @autowire
-	 * @var \Flame\Addons\FlashMessages\IFlashMessageControlFactory
-	 */
-	protected $flashMessagesControlFactory;
 
 	public function startup()
 	{
@@ -38,14 +25,6 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 			$this->flashMessage('Access denied', 'error');
 			$this->redirect('Homepage:');
 		}
-	}
-
-	/**
-	 * @return \Flame\CMS\TagBundle\Components\TagControl
-	 */
-	protected function createComponentTagsControl()
-	{
-		return $this->tagControlFactory->create();
 	}
 
 	/**
@@ -65,14 +44,5 @@ abstract class FrontPresenter extends \Flame\Application\UI\Presenter
 
 		return $control;
 	}
-
-	/**
-	 * @return \Flame\Addons\FlashMessages\FlashMessageControl
-	 */
-	protected function createComponentFlasheMessages()
-	{
-		return $this->flashMessagesControlFactory->create();
-	}
-
 
 }
