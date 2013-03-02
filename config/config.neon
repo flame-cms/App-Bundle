@@ -1,0 +1,57 @@
+#
+# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+#
+# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# http://nette.org/security-warning
+#
+parameters:
+  database:
+    driver: pdo_mysql
+    charset: utf8
+    port: 3306
+
+  disabledPresenters: ['Admin', 'Dashboard', 'User']
+
+  entities: []
+
+php:
+  date.timezone: Europe/Prague
+  zlib.output_compression: yes
+
+doctrine:
+  proxyDirs: %entities%
+  connection: %database%
+
+nette:
+  container:
+    debugger: false
+
+  application:
+    mapping:
+      *: Flame\CMS\*Module\*Presenter
+    debugger: false
+
+  session:
+    autoStart: true
+    expiration: 14 days
+    name: FLAME
+
+services:
+    routerFactory: \Flame\CMS\AppModule\Router\RouterFactory
+    router: @routerFactory::createRouter
+
+    - \Nette\Loaders\RobotLoader
+
+    presneterLoader:
+      class: \Flame\Loaders\PresenterLoader
+      setup:
+          - setAppDir(%appDir%)
+
+factories:
+  flashMessageControl:
+    create: \Flame\Addons\FlashMessages\FlashMessageControl(%templateFile%)
+    implement: \Flame\Addons\FlashMessages\IFlashMessageControlFactory
+    parameters: [templateFile = null]
+
+  navbarBuilderControl:
+      implement: \Flame\Components\NavbarBuilder\INavbarBuilderControlFactory
