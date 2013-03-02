@@ -37,7 +37,7 @@ nette:
     name: FLAME
 
 services:
-    routerFactory: \Flame\CMS\AppModule\Router\RouterFactory
+    routerFactory: \Flame\CMS\AppBundle\Router\RouterFactory
     router: @routerFactory::createRouter
 
     - \Nette\Loaders\RobotLoader

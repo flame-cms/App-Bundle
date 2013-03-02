@@ -1,6 +1,6 @@
 <?php
 
-namespace Flame\CMS\AppModule\Router;
+namespace Flame\CMS\AppBundle\Router;
 
 use Nette\Application\Routers\RouteList,
 	Nette\Application\Routers\Route,
