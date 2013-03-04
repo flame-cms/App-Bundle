@@ -16,6 +16,7 @@
 		"flame-cms/setting-bundle": "@dev",
 		"flame-cms/user-bundle": "@dev",
 		"flame/bundle-installer": "@dev",
-		"flame/framework": ">=3.0.1"
+		"flame/framework": ">=3.0.1",
+		"janmarek/webloader": ">=2.1.0"
 	}
 }

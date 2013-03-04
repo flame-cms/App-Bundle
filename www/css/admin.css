@@ -1,0 +1,20 @@
+.right {
+    float: right;
+}
+.left {
+    float: left;
+}
+.clear {
+    clear: both;
+}
+input, textarea {
+    width: auto;
+    min-width: 220px;
+}
+.tags-multiSelect{
+    max-height: 200px;
+}
+
+.nav {
+    margin-bottom: 25px;
+}

@@ -33,4 +33,26 @@ class BasePresenter extends \Flame\Application\UI\Presenter
 		return parent::getUser();
 	}
 
+	/**
+	 * @return \WebLoader\Nette\CssLoader
+	 */
+	protected function createComponentCss()
+	{
+		return new \WebLoader\Nette\CssLoader(
+			$this->context->getService('webloader.cssDefaultCompiler'),
+			$this->template->basePath . '/webtemp'
+		);
+	}
+
+	/**
+	 * @return \WebLoader\Nette\JavaScriptLoader
+	 */
+	protected function createComponentJs()
+	{
+		return new \WebLoader\Nette\JavaScriptLoader(
+			$this->context->getService('webloader.jsDefaultCompiler'),
+			$this->template->basePath . '/webtemp'
+		);
+	}
+
 }

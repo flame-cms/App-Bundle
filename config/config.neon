@@ -36,16 +36,36 @@ nette:
     expiration: 14 days
     name: FLAME
 
+webloader:
+  css:
+    default:
+      files:
+        - %appDir%/AppBundle/www/css/admin.css
+        - %appDir%/AppBundle/www/css/bootstrap.css
+        - %appDir%/AppBundle/www/css/bootstrap-responsive.css
+        - %appDir%/AppBundle/www/css/font-awesome.css
+        # - {files: ["*.css"], from: %appDir%} # Nette\Utils\Finder support
+
+   js:
+    default:
+      remoteFiles:
+        - http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+      files:
+        - %appDir%/../libs/nette/nette/client-side/netteForms.js
+        - %appDir%/AppBundle/www/js/bootstrap.js
+        - %appDir%/AppBundle/www/js/ajax.js
+        # - {files: ["*.js"], from: %appDir%} # Nette\Utils\Finder support
+
 services:
-    routerFactory: \Flame\CMS\AppBundle\Router\RouterFactory
-    router: @routerFactory::createRouter
+  routerFactory: \Flame\CMS\AppBundle\Router\RouterFactory
+  router: @routerFactory::createRouter
 
-    - \Nette\Loaders\RobotLoader
+  - \Nette\Loaders\RobotLoader
 
-    presneterLoader:
-      class: \Flame\Loaders\PresenterLoader
-      setup:
-          - setAppDir(%appDir%)
+  presneterLoader:
+    class: \Flame\Loaders\PresenterLoader
+    setup:
+        - setAppDir(%appDir%)
 
 factories:
   flashMessageControl:
