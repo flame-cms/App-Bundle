@@ -26,14 +26,6 @@ class BasePresenter extends \Flame\Application\UI\Presenter
 	}
 
 	/**
-	 * @return \Flame\CMS\UserBundle\Security\User
-	 */
-	public function getUser()
-	{
-		return parent::getUser();
-	}
-
-	/**
 	 * @return \WebLoader\Nette\CssLoader
 	 */
 	protected function createComponentCss()
@@ -55,4 +47,11 @@ class BasePresenter extends \Flame\Application\UI\Presenter
 		);
 	}
 
+	/**
+	 * @return \Flame\CMS\UserBundle\Security\User
+	 */
+	public function getUser()
+	{
+		return parent::getUser();
+	}
 }
