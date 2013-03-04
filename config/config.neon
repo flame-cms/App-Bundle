@@ -19,6 +19,7 @@ php:
   zlib.output_compression: yes
 
 doctrine:
+  debugger: false
   proxyDirs: %entities%
   connection: %database%
 
